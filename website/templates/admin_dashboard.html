@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <title>Admin Panel</title>
+    <style>
+        /* Style for the admin panel */
+        .admin-panel {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -200px; /* Initially hide the sidebar */
+            bottom: 0;
+            width: 200px;
+            background-color: #343a40; /* Dark background color */
+            transition: left 0.3s ease; /* Add transition effect */
+            z-index: 1000; /* Ensure sidebar is above other content */
+            padding-top: 60px; /* Add padding for the profile header */
+        }
+
+        .sidebar.collapsed {
+            left: -200px; /* Move the sidebar offscreen when collapsed */
+        }
+
+        .sidebar-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #212529; /* Darker background color */
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px 20px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #495057; /* Darker background color on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">Menu</div>
+        <ul>
+            <li><a href="#" class="text-light">Profile</a></li>
+            <li><a href="#" class="text-light">Students</a></li>
+            <li><a href="#" class="text-light">Bursaries</a></li>
+            <li><a href="#" class="text-light">Log out</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container">
+            <div class="admin-panel">
+                <h2 class="text-center mb-4">Admin Panel</h2>
+                <!-- Bursary Form -->
+                <form id="bursaryForm">
+                    <div class="form-group">
+                        <label for="bursaryName">Bursary Name</label>
+                        <input type="text" class="form-control" id="bursaryName" name="bursaryName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="fieldOfStudy">Field of Study</label>
+                        <select class="form-control" id="fieldOfStudy" name="fieldOfStudy" required>
+                            <option value="engineering">Engineering</option>
+                            <option value="business">Business</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bursaryID">Bursary ID</label>
+                        <input type="text" class="form-control" id="bursaryID" name="bursaryID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="closingDate">Closing Date</label>
+                        <input type="date" class="form-control" id="closingDate" name="closingDate" required>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" onclick="addBursary()">Add Bursary</button>
+                </form>
+
+                <hr>
+
+                <!-- Bursary List -->
+                <h3 class="mb-3">Bursaries</h3>
+                <ul id="bursaryList" class="list-group">
+                    <!-- Bursaries will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle Sidebar Button -->
+    <button id="sidebarCollapse" class="btn btn-dark position-fixed" style="top: 20px; left: 20px;">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('.sidebar').toggleClass('collapsed');
+                if ($('.sidebar').hasClass('collapsed')) {
+                    $('.sidebar').css('left', '-200px');
+                } else {
+                    $('.sidebar').css('left', '0');
+                }
+            });
+        });
+    </script>
+    <script>
+        function addBursary() {
+            var bursaryName = document.getElementById('bursaryName').value;
+            var description = document.getElementById('description').value;
+            var fieldOfStudy = document.getElementById('fieldOfStudy').value;
+            var bursaryID = document.getElementById('bursaryID').value;
+            var closingDate = document.getElementById('closingDate').value;
+
+            // Create a new list item for the bursary
+            var listItem = document.createElement('li');
+            listItem.className = 'list-group-item';
+
+            // Display the bursary details
+            listItem.innerHTML = `
+                <strong>${bursaryName}</strong><br>
+                Description: ${description}<br>
+                Field of Study: ${fieldOfStudy}<br>
+                Bursary ID: ${bursaryID}<br>
+                Closing Date: ${closingDate}
+                <button type="button" class="btn btn-danger btn-sm float-right" onclick="deleteBursary(this)">Delete</button>
+            `;
+
+            // Add the new bursary to the list
+            document.getElementById('bursaryList').appendChild(listItem);
+
+            // Clear the form fields
+            document.getElementById('bursaryForm').reset();
+        }
+
+        function deleteBursary(button) {
+            // Get the parent list item and remove it
+            var listItem = button.parentNode;
+            listItem.parentNode.removeChild(listItem);
+        }
+    </script>
+</body>
+</html>
