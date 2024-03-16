@@ -53,7 +53,7 @@ def signup():
             return redirect(url_for('auth.signup'))
 
         # Creating a new user
-        new_user = User(email=email, password=generate_password_hash(password, method='sha256'))
+        new_user = User(email=email, password=generate_password_hash(password, method='pbkdf2:sha256'))
         db.session.add(new_user)
         db.session.commit()
 
