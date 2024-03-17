@@ -77,34 +77,73 @@
     <div class="content" id="content">
         <div class="container">
             <div class="admin-panel">
-                <h2 class="text-center mb-4">Admin Panel</h2>
+                <h2 class="text-center mb-4">Hello, AfroPhoenix Admin</h2>
                 <!-- Bursary Form -->
-                <form id="bursaryForm">
+                <form method="post">
                     <div class="form-group">
-                        <label for="bursaryName">Bursary Name</label>
-                        <input type="text" class="form-control" id="bursaryName" name="bursaryName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fieldOfStudy">Field of Study</label>
-                        <select class="form-control" id="fieldOfStudy" name="fieldOfStudy" required>
+                        <label for="field_of_study">Field of Study</label>
+                        <select class="form-control" id="field_of_study" name="field_of_study" required>
+                            <option selected>Please select category</option>
+                            <option value="accounting">Accounting</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="arts">Arts</option>
+                            <option value="commerce">Commerce</option>
+                            <option value="construction">Construction</option>
+                            <option value="education">Education</option>
                             <option value="engineering">Engineering</option>
-                            <option value="business">Business</option>
-                            <!-- Add more options as needed -->
+                            <option value="information_technology">Information Technology</option>
+                            <option value="law">Law</option>
+                            <option value="medical">Medical</option>
+                            <option value="science">Science</option>
                         </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="bursaryID">Bursary ID</label>
-                        <input type="text" class="form-control" id="bursaryID" name="bursaryID" required>
+                        <label for="bursary_name">Bursary Name</label>
+                        <input type="text" class="form-control" id="bursary_name" name="bursary_name" required>
                     </div>
+
                     <div class="form-group">
-                        <label for="closingDate">Closing Date</label>
-                        <input type="date" class="form-control" id="closingDate" name="closingDate" required>
+                        <label for="closing_date">Closing Date</label>
+                        <input type="date" class="form-control" id="closing_date" name="closing_date" required>
                     </div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="addBursary()">Add Bursary</button>
+
+                    <div class="form-group">
+                        <label for="application_link">Application Link</label>
+                        <textarea class="form-control" id="application_link" name="application_link" rows="1" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bursary_id">Bursary ID</label>
+                        <input type="text" class="form-control" id="bursary_id" name="bursary_id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="about_sponsor">About Sponsor</label>
+                        <textarea class="form-control" id="about_sponsor" name="about_sponsor" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="about_bursary">About Bursary</label>
+                        <textarea class="form-control" id="about_bursary" name="about_bursary" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eligibility_criteria">Eligibility Criteria</label>
+                        <textarea class="form-control" id="eligibility_criteria" name="eligibility_criteria" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="to_be_covered">To be covered</label>
+                        <textarea class="form-control" id="to_be_covered" name="to_be_covered" rows="10" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="documents_required">Documents Required</label>
+                        <textarea class="form-control" id="documents_required" name="documents_required" rows="10" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" onclick="addBursary()">Add Bursary</button>
                 </form>
 
                 <hr>
@@ -140,11 +179,10 @@
     </script>
     <script>
         function addBursary() {
-            var bursaryName = document.getElementById('bursaryName').value;
-            var description = document.getElementById('description').value;
-            var fieldOfStudy = document.getElementById('fieldOfStudy').value;
-            var bursaryID = document.getElementById('bursaryID').value;
-            var closingDate = document.getElementById('closingDate').value;
+            var bursary_name = document.getElementById('bursary_name').value;
+            var field_of_study = document.getElementById('field_of_study').value;
+            var bursary_id = document.getElementById('bursary_id').value;
+            var closing_date = document.getElementById('closing_date').value;
 
             // Create a new list item for the bursary
             var listItem = document.createElement('li');
@@ -152,11 +190,10 @@
 
             // Display the bursary details
             listItem.innerHTML = `
-                <strong>${bursaryName}</strong><br>
-                Description: ${description}<br>
-                Field of Study: ${fieldOfStudy}<br>
-                Bursary ID: ${bursaryID}<br>
-                Closing Date: ${closingDate}
+                <strong>${bursary_name}</strong><br>
+                Field of Study: ${field_of_study}<br>
+                Bursary ID: ${bursary_id}<br>
+                Closing Date: ${closing_date}
                 <button type="button" class="btn btn-danger btn-sm float-right" onclick="deleteBursary(this)">Delete</button>
             `;
 
