@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bursary Details</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title" id="bursaryTitle">Dynamic Bursary Name</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="card-subtitle mb-2 text-muted">About</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" id="aboutDetails">Bursary offering company's details added by admin will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="card-subtitle mb-2 text-muted">Eligibility Criteria</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" id="eligibilityDetails">Details about eligibility criteria added by admin will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="card-subtitle mb-2 text-muted">Required Documents</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" id="documentsDetails">Details about required documents added by admin will be displayed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary btn-block" onclick="showConfirmation()">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for confirmation popup -->
+    <script>
+        function showConfirmation() {
+            if (confirm("You are now leaving Afrophoinix. You are responsible for your data.")) {
+                // If user confirms, proceed to the external website
+                window.location.href = "Afrimat Iron Ore Engineering Bursaries Application Form 2024  "; // Replace with actual URL
+            }
+        }
+    </script>
+</body>
+</html>
