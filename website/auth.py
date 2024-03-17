@@ -43,17 +43,19 @@ def logout():
 def signup():
     if request.method == 'POST':
 
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
         email = request.form.get('email')
         password = request.form.get('password')
 
         # Check if an email already exists
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
-            flash('Username already exists!', 'error')
+            flash('email already exists!', 'error')
             return redirect(url_for('auth.signup'))
 
         # Creating a new user
-        new_user = User(email=email, password=generate_password_hash(password, method='pbkdf2:sha256'))
+        new_user = User(first_name=first_name, last_name=last_name, email=email, password=generate_password_hash(password, method='pbkdf2:sha256'))
         db.session.add(new_user)
         db.session.commit()
 
