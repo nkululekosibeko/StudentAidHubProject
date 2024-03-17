@@ -8,17 +8,17 @@ def home():
     return render_template('home_page.html')
 
 @main_bp.route('/admin/dashboard')
-@login_required
+# @login_required
 def admin_dashboard():
     # Makes sure only the admin can access this page
-    if not current_user.is_admin:
-        return redirect(url_for('main.home'))
+    # if not current_user.is_admin:
+    #     return redirect(url_for('main.home'))
     return render_template('admin_dashboard.html')
 
 @main_bp.route('/student/dashboard')
-@login_required
+# @login_required
 def student_dashboard():
     # Makes sure only the student can access this page
-    if current_user.is_admin:
-        return redirect(url_for('main.home'))
+    # if current_user.is_admin:
+    #     return redirect(url_for('main.home'))
     return render_template('student_dashboard.html')
