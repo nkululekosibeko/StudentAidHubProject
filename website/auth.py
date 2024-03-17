@@ -16,7 +16,7 @@ def login():
             # Set session for admin
             session['admin_logged_in'] = True
             flash('Admin logged in successfully!', 'success')
-            return redirect(url_for('admin.dashboard'))
+            return redirect(url_for('main.admin_dashboard'))
 
         # Check if it's a student that is signing in
         user = User.query.filter_by(email=email).first()
@@ -24,7 +24,7 @@ def login():
             # Set session for student
             session['student_logged_in'] = True
             flash('Student logged in successfully!', 'success')
-            return redirect(url_for('student.dashboard'))
+            return redirect(url_for('main.student_dashboard'))
 
         flash('Invalid username or password', 'error')
 
