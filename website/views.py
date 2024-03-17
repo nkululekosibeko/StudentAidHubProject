@@ -15,6 +15,10 @@ def admin_dashboard():
     #     return redirect(url_for('main.home'))
     return render_template('admin_dashboard.html')
 
+@main_bp.route('/admin/dashboard/admin_profile')
+def admin_profile():
+    return render_template('admin_profile.html')
+
 @main_bp.route('/student/dashboard')
 # @login_required
 def student_dashboard():
