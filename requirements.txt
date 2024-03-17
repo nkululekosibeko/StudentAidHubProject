@@ -1,4 +1,5 @@
-Flask
-Flask_Login
+flask
+flask-login
 gunicon
 sqlalchemy
+
