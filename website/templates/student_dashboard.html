@@ -2,9 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <title>Admin Panel</title>
+    <style>
+        /* Style for the admin panel */
+        .admin-panel {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -200px; /* Initially hide the sidebar */
+            bottom: 0;
+            width: 200px;
+            background-color: #343a40; /* Dark background color */
+            transition: left 0.3s ease; /* Add transition effect */
+            z-index: 1000; /* Ensure sidebar is above other content */
+            padding-top: 60px; /* Add padding for the profile header */
+        }
+
+        .sidebar.collapsed {
+            left: -200px; /* Move the sidebar offscreen when collapsed */
+        }
+
+        .sidebar-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #212529; /* Darker background color */
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px 20px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #495057; /* Darker background color on hover */
+        }
+    </style>
 </head>
 <body>
-        <h1>This is the Student's Dashboard</h1>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">Menu</div>
+        <ul>
+            <li><a href="admin_profile.html" class="text-light">Profile</a></li>
+            <li><a href="#" class="text-light">Bursaries</a></li>
+            <li><a href="#" class="text-light">Log out</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+
+
+    <!-- Toggle Sidebar Button -->
+    <button id="sidebarCollapse" class="btn btn-dark position-fixed" style="top: 20px; left: 20px;">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('.sidebar').toggleClass('collapsed');
+                if ($('.sidebar').hasClass('collapsed')) {
+                    $('.sidebar').css('left', '-200px');
+                } else {
+                    $('.sidebar').css('left', '0');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
