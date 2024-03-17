@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-    <title>Student Dashboard</title>
+    <title>Student Profile</title>
     <style>
         /* Style for the admin panel */
         .admin-panel {
@@ -73,6 +73,67 @@
     </div>
 
     <!-- Main Content -->
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Student Profile</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Profile Information -->
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" value="John Doe" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" value="john@example.com" readonly>
+                        </div>
+                        <!-- Additional Details (Optional) -->
+                        <div class="form-group">
+                            <label for="education">Education</label>
+                            <input type="text" class="form-control" id="education" placeholder="Enter your education background">
+                        </div>
+                        <div class="form-group">
+                            <label for="interests">Interests</label>
+                            <input type="text" class="form-control" id="interests" placeholder="Enter your interests">
+                        </div>
+                        <!-- Edit Profile Button -->
+                        <button class="btn btn-primary" onclick="editProfile()">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Edit Profile -->
+    <script>
+        function editProfile() {
+            // Enable editing of profile information
+            document.getElementById('name').readOnly = false;
+            document.getElementById('email').readOnly = false;
+            document.getElementById('education').readOnly = false;
+            document.getElementById('interests').readOnly = false;
+
+            // Change button text to "Save Changes"
+            document.querySelector('button').textContent = 'Save Changes';
+
+            // Add event listener to save changes when clicked
+            document.querySelector('button').onclick = saveChanges;
+        }
+
+        function saveChanges() {
+            // Perform validation and save changes to the backend
+            // After saving changes, disable editing and change button text back to "Edit Profile"
+            document.getElementById('name').readOnly = true;
+            document.getElementById('email').readOnly = true;
+            document.getElementById('education').readOnly = true;
+            document.getElementById('interests').readOnly = true;
+            document.querySelector('button').textContent = 'Edit Profile';
+            document.querySelector('button').onclick = editProfile;
+        }
+    </script>
 
 
     <!-- Toggle Sidebar Button -->

@@ -36,7 +36,7 @@ def logout():
     session.pop('admin_logged_in', None)
     session.pop('student_logged_in', None)
     flash('Logged out successfully!', 'success')
-    return redirect(url_for('home'))
+    return redirect(url_for('main.home'))
 
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])

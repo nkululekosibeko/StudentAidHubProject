@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-    <title>Admin Profile</title>
+    <title>Student Notifications</title>
     <style>
         /* Style for the admin panel */
         .admin-panel {
@@ -66,12 +66,13 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">Menu</div>
         <ul>
-            <li><a href="{{ url_for('main.admin_profile') }}" class="text-light">Profile</a></li>
-            <li><a href="{{ url_for('main.admin_users_list') }}" class="text-light">Students</a></li>
-            <li><a href="{{ url_for('main.admin_bursaries') }}" class="text-light">Bursaries</a></li>
+           <li><a href="{{ url_for('main.student_profile') }}" class="text-light">Profile</a></li>
+            <li><a href="{{ url_for('main.student_notifications') }}" class="text-light">Notifications</a></li>
             <li><a href="{{ url_for('main.home') }}" class="text-light">Log out</a></li>
         </ul>
     </div>
+
+    <!-- Main Content -->
 
 
     <!-- Toggle Sidebar Button -->
@@ -94,6 +95,5 @@
             });
         });
     </script>
-
 </body>
 </html>
