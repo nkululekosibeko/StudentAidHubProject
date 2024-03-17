@@ -4,7 +4,7 @@ from .views import main_bp
 from .auth import auth_bp
 from flask_login import LoginManager
 
-# Import your User model here
+# Importing my User model here
 from .models import User
 
 # Initialize Flask-Login
