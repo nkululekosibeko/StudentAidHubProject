@@ -58,6 +58,14 @@
         .sidebar ul li a:hover {
             background-color: #495057; /* Darker background color on hover */
         }
+
+        #banner{
+            height: 360px;
+            object-fit: cover;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -66,6 +74,7 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">Menu</div>
         <ul>
+            <li><a href="{{ url_for('main.admin_dashboard') }}" class="text-light">Back To Dashboard</a></li>
             <li><a href="{{ url_for('main.admin_profile') }}" class="text-light">Profile</a></li>
             <li><a href="{{ url_for('main.admin_users_list') }}" class="text-light">Students</a></li>
             <li><a href="{{ url_for('main.admin_bursaries') }}" class="text-light">Bursaries</a></li>
@@ -73,11 +82,28 @@
         </ul>
     </div>
 
-
     <!-- Toggle Sidebar Button -->
     <button id="sidebarCollapse" class="btn btn-dark position-fixed" style="top: 20px; left: 20px;">
         <i class="fas fa-bars"></i>
     </button>
+    <div class="container">
+
+        <div style="height: 50px;"></div>
+
+        <h1 class="text-center mt-2 mb-4">
+                    StudentAidHub
+            <div style="height: 50px;"></div>
+        </h1>
+
+        <h1 class="text-center mt-2 mb-4">
+            <h4>Hello, Admin.</h4>
+            <p class="lead">This is your dashboard side for managing this system.</p>
+        </h1>
+
+        <div style="height: 30px;"></div>
+
+        <img class="img-fluid" id="banner" src="/static/banner.jpg" >
+    </div>
 
     <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

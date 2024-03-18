@@ -66,6 +66,7 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">Menu</div>
         <ul>
+            <li><a href="{{ url_for('main.admin_dashboard') }}" class="text-light">Back To Dashboard</a></li>
             <li><a href="{{ url_for('main.admin_profile') }}" class="text-light">Profile</a></li>
             <li><a href="{{ url_for('main.admin_users_list') }}" class="text-light">Students</a></li>
             <li><a href="{{ url_for('main.admin_bursaries') }}" class="text-light">Bursaries</a></li>
@@ -78,6 +79,53 @@
     <button id="sidebarCollapse" class="btn btn-dark position-fixed" style="top: 20px; left: 20px;">
         <i class="fas fa-bars"></i>
     </button>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Admin Profile </h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Profile Information -->
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" id="first_name" value="Nkululeko" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" value="Sibeko" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" value="admin@gmail.com" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="redidential_address">Residential Address</label>
+                            <input type="ressidential_address" class="form-control" id="redidential_address" value="Sussanhoof farm 400 ft ,R65 Amsterdam - Ermelo .rd, Amsterdam" readonly>
+                        </div>
+
+                        <!-- Additional Details (Optional) -->
+                        <div class="form-group">
+                            <label for="education">Education</label>
+                            <input type="text" class="form-control" id="education" placeholder="Enter your education background">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interests">Interests</label>
+                            <input type="text" class="form-control" id="interests" placeholder="Enter your interests">
+                        </div>
+                        <!-- Edit Profile Button -->
+                        <button class="btn btn-primary" onclick="editProfile()">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
