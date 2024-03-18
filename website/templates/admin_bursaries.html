@@ -82,6 +82,7 @@
                 <!-- Bursary Form -->
                 <form method="post">
                     <div class="form-group">
+
                         <label for="field_of_study">Field of Study</label>
                         <select class="form-control" id="field_of_study" name="field_of_study" required>
                             <option selected>Please select category</option>
@@ -144,16 +145,8 @@
                         <textarea class="form-control" id="documents_required" name="documents_required" rows="10" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block" onclick="addBursary()">Add Bursary</button>
+                    <button type="submit" class="btn btn-primary btn-block" >Add Bursary</button>
                 </form>
-
-                <hr>
-
-                <!-- Bursary List -->
-                <h3 class="mb-3">Bursaries</h3>
-                <ul id="bursaryList" class="list-group">
-                    <!-- Bursaries will be dynamically added here -->
-                </ul>
             </div>
         </div>
     </div>
@@ -177,39 +170,6 @@
                 }
             });
         });
-    </script>
-    <script>
-        function addBursary() {
-            var bursary_name = document.getElementById('bursary_name').value;
-            var field_of_study = document.getElementById('field_of_study').value;
-            var bursary_id = document.getElementById('bursary_id').value;
-            var closing_date = document.getElementById('closing_date').value;
-
-            // Create a new list item for the bursary
-            var listItem = document.createElement('li');
-            listItem.className = 'list-group-item';
-
-            // Display the bursary details
-            listItem.innerHTML = `
-                <strong>${bursary_name}</strong><br>
-                Field of Study: ${field_of_study}<br>
-                Bursary ID: ${bursary_id}<br>
-                Closing Date: ${closing_date}
-                <button type="button" class="btn btn-danger btn-sm float-right" onclick="deleteBursary(this)">Delete</button>
-            `;
-
-            // Add the new bursary to the list
-            document.getElementById('bursaryList').appendChild(listItem);
-
-            // Clear the form fields
-            document.getElementById('bursaryForm').reset();
-        }
-
-        function deleteBursary(button) {
-            // Get the parent list item and remove it
-            var listItem = button.parentNode;
-            listItem.parentNode.removeChild(listItem);
-        }
     </script>
 </body>
 </html>

@@ -1,5 +1,8 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
+
+from website import db
+from website.models import Bursaries
 
 main_bp = Blueprint('main', __name__)
 
@@ -17,7 +20,32 @@ def admin_dashboard():
 
 @main_bp.route('/admin/dashboard/admin_bursaries')
 def admin_bursaries():
-    return render_template('admin_bursaries.html')
+    # Creating a new bursary.
+
+    if request.method == 'POST':
+
+        bursary_id = request.form.get('bursary_id')
+        field_of_study_id =request.form.get('field_of_study_id')
+        field_of_study = request.form.get('field_of_study')
+        bursary_name = request.form.get('bursary_name')
+        closing_date = request.form.get('closing_date')
+        application_link = request.form.get('application_link')
+        about_sponsor = request.form.get('about_sponsor')
+        about_bursary = request.form.get('about_bursary')
+        eligibility_criteria = request.form.get('eligibility_criteria')
+        to_be_covered = request.form.get('to_be_covered')
+        documents_required = request.form.get('documents_required')
+
+        # Creating a new bursary.
+        new_bursary = Bursaries(bursary_id=bursary_id, field_of_study_id=field_of_study_id, field_of_study=field_of_study, bursary_name=bursary_name, closing_date=closing_date,
+                              application_link=application_link, about_sponsor=about_sponsor, about_bursary=about_bursary, eligibility_criteria=eligibility_criteria,
+                              to_be_covered=to_be_covered, documents_required=documents_required)
+        db.session.add(new_bursary)
+        db.session.commit()
+
+        flash('New bursary created successfully!.', 'success')
+        return redirect(url_for('main.admin_bursaries'))
+
 
 @main_bp.route('/admin/dashboard/admin_profile')
 def admin_profile():
