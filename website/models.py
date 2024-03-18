@@ -16,7 +16,7 @@ class FieldOfStudy(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
 
 class Bursaries(db.Model):
-    bursary_id = db.Column(db.String(12), primary_key=True)
+    bursary_id = db.Column(db.String(12), primary_key=True, unique=True)
     field_of_study_id = db.Column(db.Integer, db.ForeignKey('field_of_study.id'), nullable=False)
     field_of_study = db.relationship('FieldOfStudy', backref=db.backref('bursaries', lazy=True))
     bursary_name = db.Column(db.String(250), nullable=False)

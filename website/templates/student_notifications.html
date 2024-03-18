@@ -74,7 +74,34 @@
     </div>
 
     <!-- Main Content -->
-
+        <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">List of Applied Bursaries</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul id="appliedBursariesList">
+                            <!-- Applied bursaries will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Notifications</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul id="notificationsList">
+                            <!-- Notifications will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Toggle Sidebar Button -->
     <button id="sidebarCollapse" class="btn btn-dark position-fixed" style="top: 20px; left: 20px;">
@@ -95,6 +122,67 @@
                 }
             });
         });
+
+        // new scipt
+
+            <!-- JavaScript for fetching data from the backend -->
+
+        // Fetch applied bursaries and notifications when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchAppliedBursaries();
+            fetchNotifications();
+        });
+
+        // Function to fetch applied bursaries from the backend
+        function fetchAppliedBursaries() {
+            // Make AJAX request to fetch applied bursaries data
+            // Replace 'backend/applied_bursaries' with the actual backend endpoint
+            fetch('backend/applied_bursaries')
+                .then(response => response.json())
+                .then(data => {
+                    // Display applied bursaries
+                    displayAppliedBursaries(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching applied bursaries:', error);
+                });
+        }
+
+        // Function to display applied bursaries
+        function displayAppliedBursaries(appliedBursaries) {
+            const appliedBursariesList = document.getElementById('appliedBursariesList');
+            appliedBursaries.forEach(bursary => {
+                const listItem = document.createElement('li');
+                listItem.textContent = bursary.name; // Adjust as needed based on your data structure
+                appliedBursariesList.appendChild(listItem);
+            });
+        }
+
+        // Function to fetch notifications from the backend
+        function fetchNotifications() {
+            // Make AJAX request to fetch notifications data
+            // Replace 'backend/notifications' with the actual backend endpoint
+            fetch('backend/notifications')
+                .then(response => response.json())
+                .then(data => {
+                    // Display notifications
+                    displayNotifications(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching notifications:', error);
+                });
+        }
+
+        // Function to display notifications
+        function displayNotifications(notifications) {
+            const notificationsList = document.getElementById('notificationsList');
+            notifications.forEach(notification => {
+                const listItem = document.createElement('li');
+                listItem.textContent = notification.message; // Adjust as needed based on your data structure
+                notificationsList.appendChild(listItem);
+            });
+        }
     </script>
+
 </body>
 </html>
